@@ -1,34 +1,36 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
+<?php 
+include 'header.php';
+?>
+<script src="js/search.js"></script>
     </head>
     <body>
         <table>
             <tr>
-                <td>
-                    <form method="POST" action="SearchController.php">
-                        <input type="text" name="search">
-                        <input type="submit" name="send" value="Send">
-                    </form>
+                <td>                    
+                    <input type="text" id="text">
+                    <button id="search">Search</button>                    
                 </td>
                 <td>
-                    <a href="LoginScreen.php">Login</a>
-                    <a href="RegisterScreen.php">Register</a>
+                    <?php                     
+                    if(!isset($_SESSION['logged'])){
+                    echo "<a href='LoginScreen.php'>Login</a>";
+                    ?>
                 </td>
-            </tr>
-            <tr>
-                
-            </tr>
-        </table>
-        <?php
-        // put your code here
+                <td>
+                    <?php
+                    echo "<a href='RegisterScreen.php'>Register</a>";
+                    }else{
+                        echo "<a href='LogOut.php'>Log out</a>";
+                    }
+                    ?>
+                </td>
+            </tr>                        
+        </table>        
+        <div id="divMessage"><p id="showMessage"></p></div> 
+        <div class="col-sm-8 text-left" id="table"></div>
+        <div id="divLogin">
+        <?php include "LoginScreen.php";
         ?>
+        </div>
     </body>
 </html>

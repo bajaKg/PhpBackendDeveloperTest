@@ -8,6 +8,7 @@
         
         private $dbh;
         
+        //create a connection to a database
         function __construct() {
             try{
                 $connectionString = "mysql:host=".self::hostName.";dbname=".self::dbName;
@@ -18,13 +19,26 @@
             }
         }
         
+        //close the connection with the database
         function __destruct() {
             $this->dbh = null;
         }
         
+        //chack if email already exists in table user
+        function findUserByEmail($email){
+            $sql = "SELECT * from user WHERE email LIKE '".$email."'";
+            $pdoExpresion = $this->dbh->query($sql);                             
+            if(!$pdoExpresion){
+                die("Execute query error");
+            }else{
+                $array = $pdoExpresion->fetch(PDO::FETCH_ASSOC);
+                return $array;
+            }
+        }
+        
+        //check if user with specified email and password exists in table user
         function findUserByEmailAndPassword($email, $password){
-            try{
-                //var_dump($password);
+            try{                
                 $sql = "SELECT * from user WHERE email LIKE '".$email."' AND password LIKE '".$password."'";
                 $pdoExpresion = $this->dbh->query($sql);                             
                 if(!$pdoExpresion)
@@ -42,19 +56,21 @@
             }
         }
         
-        function findUserByEmailAndName($text){
-            try{
-                $sql = "SELECT * from user WHERE email LIKE ".$text." OR name LIKE ".$text;
-                $pdoExpresion = $this->dbh->query($sql);
-                $array = $pdoExpresion->fetchAll(PDO::FETCH_ASSOC);
+        //search for  users with either a name or an email 
+        //address similar to the query text 
+        function findUserByEmailorName($text){
+            try{                
+                $sql = "SELECT * FROM user WHERE email LIKE '%".$text."%' OR name LIKE '%".$text."%'";
+                $pdoExpresion = $this->dbh->query($sql);                
+                $array = $pdoExpresion->fetchAll(PDO::FETCH_ASSOC);                
                 return $array;
             } catch (Exception $ex) {
                  echo "Error: ";
                  echo $e->getMessage();
             }
         }
-        
-        public function AddNewUser($email, $name, $password) {
+                
+        public function AddNewUser($email, $name, $password){
             try {
                 $sql = "INSERT INTO user(email,name,password)";
                 $sql.= "VALUES ('$email', '$name', '$password')";

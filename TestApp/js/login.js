@@ -1,7 +1,9 @@
 function confirmLogin(arg){
     console.log('confirmLogin');
     if (arg['data'] == 1){
-        window.location.href = "HomeScreen.php";
+        //window.location.href = "HomeScreen.php";
+        $('#divMessage').show();		
+        $('#showMessage').text(arg['message']);	
     } else {
         $('#divMessage').show();		
         $('#showMessage').text(arg['message']);	

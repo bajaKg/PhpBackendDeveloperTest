@@ -1,9 +1,7 @@
 <?php
     include 'header.php'
     ?>   
-    <script src="js/login.js">
-        
-    </script>
+    <script src="js/login.js"></script>
     </head>
     <body>
         <table>
