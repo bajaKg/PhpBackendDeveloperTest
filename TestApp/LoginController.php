@@ -8,7 +8,7 @@ $email = $requestData->email;
 $password = sha1($requestData->password);
 $userDb = new User();
 
-if(($email!=null || $email!="") && ($password!=null || $password!="")){
+if(($email!="") && ($password!="")){
     
     $temp = $userDb->findUserByEmailAndPassword($email, $password);        
     if($temp != null){        

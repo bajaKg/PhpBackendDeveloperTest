@@ -24,7 +24,7 @@
             $this->dbh = null;
         }
         
-        //chack if email already exists in table user
+        //check if an email already exists in the table user
         function findUserByEmail($email){
             $sql = "SELECT * from user WHERE email LIKE '".$email."'";
             $pdoExpresion = $this->dbh->query($sql);                             
@@ -36,7 +36,7 @@
             }
         }
         
-        //check if user with specified email and password exists in table user
+        //check if an user with the specified email and password exists in the table user
         function findUserByEmailAndPassword($email, $password){
             try{                
                 $sql = "SELECT * from user WHERE email LIKE '".$email."' AND password LIKE '".$password."'";
@@ -82,7 +82,6 @@
                 echo $e->getMessage();
                 return false;
                 
-            }
-            
+            }            
         }
     }

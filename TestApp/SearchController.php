@@ -20,7 +20,7 @@ if(isset($_SESSION['logged'])){
 
                 $tempB [] = $temp1;
             }
-            $data = $temp;        
+            $data = $tempB;        
             $message = "";
         }else{
             $data = 0;
@@ -32,7 +32,7 @@ if(isset($_SESSION['logged'])){
             $message = "";
     } 
     header('content-type:application/json'); 
-    echo JsonView::jsonModel($message, $data);
+    echo JsonView::jsonModel($message, $data);    
 }
 else{
     $data = -1;
