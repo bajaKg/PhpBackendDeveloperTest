@@ -1,5 +1,4 @@
 <?php
-require_once 'JsonView.php';
 include "header.php";
 ?>  
 <script>

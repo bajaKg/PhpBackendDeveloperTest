@@ -23,7 +23,7 @@ include 'header.php';
                     echo "<a href='RegisterScreen.php'>Register</a>";                    
                     }                    
                     else{
-                        echo "<a href='LogOut.php'>Log out</a>";
+                        echo "<a href='../Controller/LogOut.php'>Log out</a>";
                     }
                     ?>
                 </td>

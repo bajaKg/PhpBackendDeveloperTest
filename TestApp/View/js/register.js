@@ -16,6 +16,6 @@ $(document).ready(function() {
         var req_data = {"name": name, "email": email, "password": password, "confirm":confirm };
         var request = JSON.stringify(req_data);
 
-        callAjax('RegisterController.php', request, 'POST', confirmRegistration);
+        callAjax('../Controller/RegisterController.php', request, 'POST', confirmRegistration);
     });
 });

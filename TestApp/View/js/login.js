@@ -17,6 +17,6 @@ $(document).ready(function() {
         var req_data = {"email": email, "password": password };
         var request = JSON.stringify(req_data);
 
-        callAjax('LoginController.php', request, 'POST', confirmLogin);
+        callAjax('api.php?controller=login&action=authenticate', request, 'POST', confirmLogin);
     });
 });

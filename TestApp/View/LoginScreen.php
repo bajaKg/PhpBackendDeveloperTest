@@ -11,6 +11,7 @@
             <tr><td><button type="button" value="Login" id="login">Login</button></tr></td>
             <tr></form></tr>
         </table>
+        <a href="api.php">api</a>
         <div id="divMessage"><p id="showMessage"></p></div> 
     </body>
 </html>

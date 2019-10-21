@@ -1,13 +1,15 @@
 <?php
-require_once 'JsonView.php';
-require_once 'User.php';
+require_once '../Common/JsonView.php';
+require_once '../Model/User.php';
+require_once '../Model/UserMapper.php';
 
 $requestData = json_decode($_POST["data"]);
 $name = $requestData->name;
 $email = $requestData->email;
 $password = $requestData->password;
 $confirm = $requestData->confirm;
-$userDb = new User();
+$user = new User();
+$userMapper = new UserMapper();
 
 if($password=="" or $confirm=="" or $name=="" or $email==""){
     $message = "* You must fill all input fields.";
@@ -19,14 +21,18 @@ if($password=="" or $confirm=="" or $name=="" or $email==""){
     $message = "Invalid format of email address.";
     $data = 0;    
 }else{
-    $temp = $userDb->findUserByEmail($email);
-    if($temp!=null) {
+    $temp = $userMapper->findUserByEmail($email);
+    if($temp == 1) {        
         $message = "User with specified email is already registered.";
         $data = 0;
     }else{
         if($password==$confirm){
             $password = sha1($password);
-            $temp = $userDb->AddNewUser($email, $name, $password);
+            
+            $user->setName($name);
+            $user->setEmail($email);
+            $user->setPassword($password);
+            $temp = $userMapper->AddUser($user);
             if($temp){
                 $message = "User succesfully registered";
                 $data = 1;            

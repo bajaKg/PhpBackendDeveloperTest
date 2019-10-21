@@ -23,6 +23,6 @@ $(document).ready(function() {
         var req_data = {"text": text};
         var request = JSON.stringify(req_data);
 
-        callAjax('SearchController.php', request, 'POST', showResults);
+        callAjax('../Controller/SearchController.php', request, 'POST', showResults);
     });
 });

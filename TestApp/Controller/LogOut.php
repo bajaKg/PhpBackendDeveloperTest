@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 $_SESSION=array();
-header('Location:HomeScreen.php');
+header('Location:../View/HomeScreen.php');
 ?>

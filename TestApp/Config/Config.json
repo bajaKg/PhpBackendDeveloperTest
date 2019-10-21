@@ -1,0 +1,5 @@
+{
+    "username": "root",
+    "password": "",
+    "connection_string" : "mysql:host=localhost;dbname=dbuser;"
+}
